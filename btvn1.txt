@@ -1,0 +1,15 @@
+﻿Phần 1: Phân tích
+
+notepad bị not responding vì nó mở file 800MB thì load hết vào ram cùng một lúc, ram với cpu không chịu nổi nên máy bị đơ.
+
+lệnh cat lỗi trong cmd vì cat là lệnh của linux, cmd cũ của windows không có lệnh này nên báo command not found.
+
+cat chạy được trong powershell vì cat chỉ là tên gọi tắt (alias) của Get-Content, powershell có sẵn alias này. Get-Content đọc file theo luồng, đọc từng dòng nên không bị tràn ram.
+
+Phần 2: Hoàn thiện
+
+1. xem toàn bộ nội dung file:
+Get-Content server_log_800MB.log
+
+2. xem 10 dòng cuối:
+Get-Content server_log_800MB.log -Tail 10
